@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-navbar dark>
+    <ion-title (click)="menu()" padding><img src="images/logo.svg"/></ion-title>
+    <ion-buttons start bind-hidden="!session">
+      <button (click)="profile()">
+        <ion-icon name='contact'></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+    <button (click)="search()">
+      <ion-icon name='search'></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="session-browser home">
+
+<div class="row">
+  <ion-grid>
+    <ion-row responsive-sm>
+      <ion-col width-50 offset-25>
+        <ion-card *ngIf="!show_register && !show_reset">
+        <ion-card-header danger padding style="background-color:#493B55">
+          <p class="text-center white">
+            <strong>
+              Log in
+            </strong>
+          </p>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list padding inset>
+
+            <ion-item>
+              <ion-label floating>Gamer name</ion-label>
+              <ion-input type="text" [(ngModel)]="form_login.user_name" autocomplete="off" autocorrect="off" autocapitalize="off"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" [(ngModel)]="form_login.user_password"></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-card-content>
+
+      </ion-card>
+      <div class="row text-center" *ngIf="!show_register && !show_reset">
+        <button round danger large padding (click)="login()">
+         <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
+          Login
+        </button>
+        <button round favorite large padding (click)="show_register=1">
+           <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+          I'm New
+        </button>
+      </div>
+      <p class="text-center yellow" *ngIf="!show_register && !show_reset">
+        <strong (click)="show_reset=1">
+          Forgot Password?
+        </strong>
+      </p>
+        <ion-card *ngIf="show_register==1">
+        <ion-card-header danger padding style="background-color:#493B55">
+          <p class="text-center white">
+            <strong>
+              Register
+            </strong>
+          </p>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list padding inset>
+
+            <ion-item>
+              <ion-label floating>Gamer name</ion-label>
+              <ion-input type="text" [(ngModel)]="form_register.user_name" autocomplete="off" autocorrect="off" autocapitalize="off"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Email</ion-label>
+              <ion-input type="text" [(ngModel)]="form_register.user_email" autocomplete="off" autocorrect="off" autocapitalize="off"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" [(ngModel)]="form_register.user_password"></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-card-content>
+
+      </ion-card>
+      <div class="row text-center" *ngIf="show_register==1">
+        <button round danger large padding (click)="register()">
+          <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+          Register
+        </button>
+        <button round primary large padding (click)="show_register=null">
+          <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
+          Login
+        </button>
+      </div>
+      <ion-card *ngIf="show_reset==1">
+      <ion-card-header danger padding style="background-color:#493B55">
+        <p class="text-center white">
+          <strong>
+            Reset Password
+          </strong>
+        </p>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list padding inset>
+
+          <ion-item>
+            <ion-label floating>Your Email</ion-label>
+            <ion-input type="text" [(ngModel)]="form_reset.user_email" autocomplete="off" autocorrect="off" autocapitalize="off"></ion-input>
+          </ion-item>
+
+        </ion-list>
+      </ion-card-content>
+
+    </ion-card>
+    <div class="row text-center" *ngIf="show_reset==1">
+      <button round danger large padding (click)="reset()">
+        <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+        Register
+      </button>
+      <button round primary large padding (click)="show_reset=null">
+        <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
+        Login
+      </button>
+    </div>
+      <p class="text-center white" style="opacity:.50">
+        <strong>
+          For added security, social login is disabled on desktop
+        </strong>
+      </p>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+</ion-content>

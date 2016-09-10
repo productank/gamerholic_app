@@ -1,0 +1,173 @@
+<ion-header>
+  <ion-navbar dark>
+    <ion-title (click)="menu()" padding><img src="images/logo.svg"/></ion-title>
+    <ion-buttons start bind-hidden="!session">
+      <button (click)="profile()">
+        <ion-icon name='contact'></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+    <button (click)="search()">
+      <ion-icon name='search'></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home">
+    <div class="row">
+      <ion-grid>
+        <ion-row responsive-sm>
+          <ion-col width-50 offset-25 *ngIf="challenge_accepted<1">
+            <ion-card>
+            <ion-card-header danger padding style="background-color:#493B55">
+              <p class="text-center white">
+                <strong>
+                  You've been challenged
+                </strong>
+              </p>
+            </ion-card-header>
+            <ion-card-content>
+                <div class="row" padding secondary style="font-size:15px">
+                  <span secondary class="strong">opponent: {{opponent_name}}</span><br />
+                  <span secondary class="strong">win streak: {{opponent_win_streak}} | loss streak: {{opponent_loss_streak}}</span><br />
+                  <span secondary class="strong">wins: {{opponent_wins}} | loss: {{opponent_loss}}</span><br /><br />
+                  <span secondary class="strong">xbox one {{opponent_xbox_one}}</span><br />
+                  <span secondary class="strong">PS4: {{opponent_ps4}}</span><br />
+                  <span secondary class="strong">PC: {{opponent_pc}}</span><br />
+                  <span secondary class="strong">Wii: {{opponent_wii}}</span><br />
+                  <span secondary class="strong">Twitch: {{opponent_twitch}}</span><br />
+                  <span secondary class="strong">Youtube: {{opponent_youtube}}</span><br />
+                  <span secondary class="strong">Twitter: {{opponent_twitter}}</span><br />
+                </div>
+            </ion-card-content>
+          </ion-card>
+          <div class="row text-center" padding>
+            <button  favorite (click)="accept()" large>
+              <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+              Accept
+            </button>
+          </div>
+        </ion-col>
+        <ion-col width-50 offset-25 *ngIf="challenge_score_pending>0">
+          <ion-card>
+          <ion-card-header danger padding style="background-color:#493B55">
+            <p class="text-center white">
+              <strong>
+                Score Pending
+              </strong>
+            </p>
+          </ion-card-header>
+          <ion-card-content>
+              <div class="row" padding secondary style="font-size:15px">
+                <span secondary class="strong">opponent: {{opponent_name}}</span><br />
+                <span secondary class="strong">win streak: {{opponent_win_streak}} | loss streak: {{opponent_loss_streak}}</span><br />
+                <span secondary class="strong">wins: {{opponent_wins}} | loss: {{opponent_loss}}</span><br /><br />
+                <span secondary class="strong">xbox one {{opponent_xbox_one}}</span><br />
+                <span secondary class="strong">PS4: {{opponent_ps4}}</span><br />
+                <span secondary class="strong">PC: {{opponent_pc}}</span><br />
+                <span secondary class="strong">Wii: {{opponent_wii}}</span><br />
+                <span secondary class="strong">Twitch: {{opponent_twitch}}</span><br />
+                <span secondary class="strong">Youtube: {{opponent_youtube}}</span><br />
+                <span secondary class="strong">Twitter: {{opponent_twitter}}</span><br />
+              </div>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+        <ion-card-header danger padding style="background-color:#493B55">
+          <p class="text-center white">
+            <strong>
+              Report Score
+            </strong>
+          </p>
+        </ion-card-header>
+        <ion-card-content>
+            <div class="row" padding secondary style="font-size:15px">
+              <ion-list>
+                <ion-item>
+                  <ion-label floating>Who Won?</ion-label>
+                  <ion-select [(ngModel)]="score_form.winner">
+                       <ion-option value="1">{{challenge_doc.player1_name}}</ion-option>
+                       <ion-option value="2">{{challenge_doc.player2_name}}</ion-option>
+                     </ion-select>
+                   </ion-item>
+
+                <ion-item>
+                  <ion-label floating>{{challenge_doc.player1_name}} score</ion-label>
+                  <ion-input type="number" [(ngModel)]="score_form.player1_score"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label floating>{{challenge_doc.player2_name}} score</ion-label>
+                  <ion-input type="number" [(ngModel)]="score_form.player2_score"></ion-input>
+                </ion-item>
+
+              </ion-list>
+            </div>
+        </ion-card-content>
+      </ion-card>
+        <div class="row text-center" padding>
+          <button  danger (click)="score()" large>
+            <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+            Score
+          </button>
+        </div>
+      </ion-col>
+
+      <ion-col width-50 offset-25 *ngIf="challenge_score_confirm_pending>0">
+        <ion-card>
+        <ion-card-header danger padding style="background-color:#493B55">
+          <p class="text-center white">
+            <strong>
+              Score Pending
+            </strong>
+          </p>
+        </ion-card-header>
+        <ion-card-content>
+            <div class="row" padding secondary style="font-size:15px">
+              <span secondary class="strong">opponent: {{opponent_name}}</span><br />
+              <span secondary class="strong">win streak: {{opponent_win_streak}} | loss streak: {{opponent_loss_streak}}</span><br />
+              <span secondary class="strong">wins: {{opponent_wins}} | loss: {{opponent_loss}}</span><br /><br />
+              <span secondary class="strong">xbox one {{opponent_xbox_one}}</span><br />
+              <span secondary class="strong">PS4: {{opponent_ps4}}</span><br />
+              <span secondary class="strong">PC: {{opponent_pc}}</span><br />
+              <span secondary class="strong">Wii: {{opponent_wii}}</span><br />
+              <span secondary class="strong">Twitch: {{opponent_twitch}}</span><br />
+              <span secondary class="strong">Youtube: {{opponent_youtube}}</span><br />
+              <span secondary class="strong">Twitter: {{opponent_twitter}}</span><br />
+            </div>
+        </ion-card-content>
+      </ion-card>
+
+        <ion-card *ngIf="challenge_doc.game_scored_by==user_id">
+        <ion-card-header danger padding style="background-color:#493B55">
+          <p class="text-center white">
+            <strong>
+              confirm score
+            </strong>
+          </p>
+        </ion-card-header>
+        <ion-card-content>
+            <div class="row" padding secondary style="font-size:15px">
+                <span secondary>{{challenge_doc.player1_name}} : {{challenge_doc.player1_score}}</span><br />
+                <span secondary>{{challenge_doc.player2_name}} : {{challenge_doc.player2_score}}</span>
+
+            </div>
+        </ion-card-content>
+      </ion-card>
+      <div class="row text-center" padding>
+        <button  danger (click)="confirm()" large>
+          <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+          confirm score
+        </button>
+        <button  light (click)="dispute()" large>
+          <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+          dispute score
+        </button>
+      </div>
+
+    </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

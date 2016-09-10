@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-navbar dark>
+    <ion-title (click)="menu()" padding><img src="images/logo.svg"/></ion-title>
+    <ion-buttons start bind-hidden="!session">
+      <button (click)="profile()">
+        <ion-icon name='contact'></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+    <button (click)="search()">
+      <ion-icon name='search'></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home">
+
+  <ion-row responsive-sm wrap style="margin-bottom:300px">
+    <ion-col width-75>
+      <ion-card>
+        <ion-card-header style="background-color:#493B55">
+          <p class="text-center white strong">
+            <strong>
+              Pacman
+            </strong>
+          </p>
+        </ion-card-header>
+        <ion-card-content>
+            <div class="row text-center">
+              <iframe width="100%" height="600" [src]="game_url"  frameBorder="0"></iframe>
+            </div>
+        </ion-card-content>
+      </ion-card>
+      <div class="row text-center">
+        <button large favorite>
+            <ion-icon ios="ios-play" md="md-play"></ion-icon>
+          Insert Coin
+        </button>
+
+      </div>
+    </ion-col>
+    <ion-col width-25>
+      <ion-card>
+        <ion-card-header style="background-color:#493B55">
+          <p class="text-center white strong">
+            <strong>
+              Win Streak Prize
+            </strong>
+          </p>
+        </ion-card-header>
+        <ion-card-content>
+            <div class="row">
+
+            </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header style="background-color:#493B55">
+          <p class="text-center white strong">
+            <strong>
+              Wallet
+            </strong>
+          </p>
+        </ion-card-header>
+        <ion-card-content>
+            <div class="row">
+              <ion-list inset>
+                <ion-item>
+                  <h3 class="text-center strong" secondary>
+                  {{user_ghc_balance}} GHC
+                  </h3>
+                  <p class="text-center" style="font-size:10px">
+                    GHC Balance
+                  </p>
+              </ion-item>
+                <ion-item>
+                  <h3 class="text-center strong" secondary>
+                    ${{user_ghc_balance_dollars}}
+                  </h3>
+                  <p class="text-center" style="font-size:10px">
+                    Account Value
+                  </p>
+              </ion-item>
+                <ion-item>
+                  <h3 class="text-center strong" light>
+                    <ion-icon ios="ios-thermometer" md="md-thermometer" light></ion-icon>
+                    {{user_ghc_cold_reserves}} GHC
+                  </h3>
+                  <p class="text-center" style="font-size:10px">
+                    cold reserves
+                  </p>
+              </ion-item>
+              <ion-item>
+                <h3 class="text-center strong" secondary>
+                  <ion-icon ios="ios-thermometer" md="md-thermometer" danger></ion-icon>
+                  {{user_ghc_hot_reserves}} GHC
+                </h3>
+                <p class="text-center" style="font-size:10px">
+                  hot reserves
+                </p>
+              </ion-item>
+                  <ion-item>
+                    <h3 class="text-center strong" secondary>
+                       <ion-icon ios="ios-game-controller-b" md="md-game-controller-b"></ion-icon>
+                       <span *ngIf="user_power_level>1">
+                         {{user_power_level}}
+                       </span>
+                      <span *ngIf="user_power_level<1">
+                        0.00
+                      </span>
+                    </h3>
+                    <p class="text-center" style="font-size:10px">
+                      Gamerholic Power
+                    </p>
+                </ion-item>
+                  <ion-item>
+                    <h2 class="text-center strong">1 GHC = {{platform_ghc_price}} <span style="font-size:10px">BTC</span></h2>
+                </ion-item>
+              </ion-list>
+            </div>
+            <div class="row">
+              <button  item-right favorite small>
+                <ion-icon ios="ios-return-right" md="md-return-right"></ion-icon>
+                Send GHC
+              </button>
+              <button danger item-left danger small>
+                Get GHC
+                <ion-icon ios="ios-return-left" md="md-return-left"></ion-icon>
+
+              </button>
+            </div>
+        </ion-card-content>
+
+      </ion-card>
+      <div class="row text-center" padding>
+        <button danger light small (click)="logout()">
+          Logout
+           <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon>
+
+        </button>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

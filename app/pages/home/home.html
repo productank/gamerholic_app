@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar dark>
+    <ion-title (click)="menu()" padding><img src="images/logo.svg"/></ion-title>
+    <ion-buttons start bind-hidden="!session">
+      <button (click)="profile()">
+        <ion-icon name='contact'></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home">
+
+  <div class="row" style="margin-top:63px" *ngIf="user_id">
+    <h4 class="text-center" favorite>
+      Balance: {{user_ghc_balance}}
+    </h4>
+    <h3 class="text-center" danger>
+      Power Level: {{user_power_level}}
+    </h3>
+    <h4 class="text-center" danger>
+      Hot Reserves: {{user_ghc_hot_reserves}}
+    </h4>
+    <h4 class="text-center" light>
+      Cold Reserves: {{user_ghc_cold_reserves}}
+    </h4>
+    <h4 class="text-center" light>
+      Bid: {{GHC_Bid}}
+    </h4>
+    <h4 class="text-center" light>
+      Ask: {{GHC_Ask}}
+    </h4>
+    <h4 class="text-center" light>
+      24 hour High: {{GHC_High}}
+    </h4>
+    <h4 class="text-center" light>
+      24 Hour Low: {{GHC_Low}}
+    </h4>
+  </div>
+  <div class="row text-center" *ngIf="user_id">
+    <button favorite large>
+       <ion-icon ios="ios-arrow-dropup" md="md-arrow-dropup"></ion-icon>
+      Send GHC
+    </button>
+  <button danger large>
+     <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
+    Receive GHC
+  </button>
+  </div>
+
+  <div class="row" style="margin-top:23px" *ngIf="!user_id">
+    <p class="text-center">
+      <ion-title><img src="images/controller.svg"/></ion-title>
+    </p>
+    <h3 class="text-center white">
+      Gamerholic Coin (GHC)
+    </h3>
+    <h4 class="text-center" favorite>
+      Bid: {{GHC_Bid}}
+    </h4>
+    <h4 class="text-center" favorite>
+      Ask: {{GHC_Ask}}
+    </h4>
+    <h4 class="text-center" favorite>
+      24 hour High: {{GHC_High}}
+    </h4>
+    <h4 class="text-center" favorite>
+      24 Hour Low: {{GHC_Low}}
+    </h4>
+    <div class="row text-center">
+      <button danger large>
+         <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+        Login/Signup
+      </button><br />
+      <button clear favorite large>
+         <ion-icon ios="ios-shuffle" md="md-shuffle"></ion-icon>
+        Trade GHC
+      </button>
+
+
+    </div>
+  </div>
+
+</ion-content>

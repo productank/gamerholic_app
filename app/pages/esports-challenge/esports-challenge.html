@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar dark>
+    <ion-title (click)="menu()" padding><img src="images/logo.svg"/></ion-title>
+    <ion-buttons start bind-hidden="!session">
+      <button (click)="profile()">
+        <ion-icon name='contact'></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+    <button (click)="search()">
+      <ion-icon name='search'></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home">
+  <div class="row">
+    <ion-grid>
+      <ion-row responsive-sm>
+        <ion-col width-50 offset-25>
+          <ion-card>
+          <ion-card-header danger padding style="background-color:#493B55">
+            <p class="text-center white">
+              <strong>
+                Challenge {{opponent_name}}
+              </strong>
+            </p>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list padding inset>
+              <ion-item>
+                <ion-label floating>Are you streaming?</ion-label>
+                <ion-select [(ngModel)]="challenge_form.stream">
+                     <ion-option value="1">Yes</ion-option>
+                     <ion-option value="0">No</ion-option>
+                   </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label>Twitch</ion-label>
+                <ion-input type="text" [(ngModel)]="challenge_form.twitch" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="{{user_twitch}}"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Youtube</ion-label>
+                <ion-input type="text" [(ngModel)]="challenge_form.youtube" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="{{user_youtube}}"></ion-input>
+              </ion-item>
+
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+        <div class="row text-center">
+          <button favorite large (click)="challenge()">
+            <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+            Challenge
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+
+</ion-content>

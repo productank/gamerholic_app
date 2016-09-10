@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<widget id="com.productank.gamerholic117831" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Gamerholic</name>
+  <description>I Win For A Living</description>
+  <author email="cs@productank.com" href="http://productank.com/">ProducTank</author>
+  <content src="index.html"/>
+  <access launch-external="yes" origin="*"/>
+  <allow-intent href="http://*/*"/>
+  <allow-intent href="https://*/*"/>
+  <allow-intent href="tel:*"/>
+  <allow-intent href="sms:*"/>
+  <allow-intent href="mailto:*"/>
+  <allow-intent href="geo:*"/>
+  <allow-navigation href="http://*/*"/>
+  <allow-navigation href="https://*/*"/>
+  <allow-navigation href="data:*"/>
+  <platform name="android">
+    <allow-intent href="market:*"/>
+  </platform>
+  <platform name="ios">
+    <allow-intent href="itms:*"/>
+    <allow-intent href="itms-apps:*"/>
+  </platform>
+  <preference name="webviewbounce" value="false"/>
+  <preference name="UIWebViewBounce" value="false"/>
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="android-minSdkVersion" value="16"/>
+  <preference name="BackupWebStorage" value="none"/>
+  <preference name="SplashScreenDelay" value="2000"/>
+  <preference name="FadeSplashScreenDuration" value="2000"/>
+  <plugin name="phonegap-plugin-push" source="npm" spec="1.7.2">
+    <param name="SENDER_ID" value="604883845086"/>
+  </plugin>
+  <plugin name="cordova-plugin-inappbrowser" spec="~1.4.0"/>
+  <plugin name="cordova-plugin-whitelist" spec="~1.2.2"/>
+  <plugin name="org.apache.cordova.geolocation" source="pgb" spec="0.3.10"/>
+  <feature name="StatusBar">
+    <param name="ios-package" onload="true" value="CDVStatusBar"/>
+  </feature>
+  <feature name="SocialSharing">
+    <param name="ios-package" value="SocialSharing"/>
+  </feature>
+  <feature name="SocialSharing">
+    <param name="android-package" value="nl.xservices.plugins.SocialSharing"/>
+  </feature>
+  <feature name="SocialSharing">
+    <param name="wp-package" value="SocialSharing"/>
+  </feature>
+  <gap:plugin name="nl.x-services.plugins.socialsharing"/>
+</widget>
